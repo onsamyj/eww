@@ -10,8 +10,6 @@
         :height "48px"
         :anchor "bottom left")
     :stacking "overlay"
-    :exclusive true
-    :focusable false
     (rain-left-overall)
 )
 
@@ -39,8 +37,6 @@
         :height "48px"
         :anchor "bottom right")
     :stacking "overlay"
-    :exclusive true
-    :focusable false
     (rain-right-overall)
 )
 
