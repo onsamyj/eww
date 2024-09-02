@@ -1,0 +1,36 @@
+(defwidget rain-ram-swap-overlay []
+    (overlay
+        (rain-ram-graph)
+        (rain-ram-text)
+    )
+)
+
+(defwidget rain-ram-text []
+    (box
+        :orientation "vertical"
+        (rain-text-right
+            :text "RAM ${ round( ( EWW_RAM.used_mem ) / 1024 / 1024 / 1024, 1 ) }ᴳᴮ"
+        )
+        (rain-text-right
+            :text "VRAM ${ round( ( gpu-vram-used ) / 1024 / 1024 / 1024, 1 ) }ᴳᴮ"
+        )
+    )
+)
+
+(defwidget rain-ram-graph []
+    (box
+        (rain-graph
+            :value "${ EWW_RAM.used_mem }"
+            :max "${ EWW_RAM.total_mem }"
+        )
+    )
+)
+
+(defwidget rain-vgram-graph []
+    (box
+        (rain-graph
+            :value "${ gpu-vram-used }"
+            :max "${ gpu-vram-total }"
+        )
+    )
+)

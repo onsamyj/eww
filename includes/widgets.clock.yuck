@@ -1,0 +1,45 @@
+(defpoll unix-time
+    :interval "2s"
+    "date +\'%s\'"
+)
+
+(defwidget rain-clock-overlay []
+    (tooltip
+        (label
+            :class "rain-label"
+            :text "Turn off screens"
+        )
+        (overlay
+            :width 100
+            (overlay
+                (rain-clock-dotweek)
+                (rain-clock-time-day)
+            )
+            (button
+                :onclick "/home/andrew/.config/eww/scripts/screen-off.nu"
+            )
+        )
+    )
+)
+
+(defwidget rain-clock-dotweek []
+    (box
+        :class "mono"
+        (rain-text-center
+            :text "${ formattime( unix-time, "%u" ) >= 1 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 2 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 3 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 4 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 5 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 6 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 7 ? "•" : "·" }"
+        )
+    )
+)
+
+(defwidget rain-clock-time-day []
+    (box
+        :orientation "vertical"
+        (rain-text-center
+            :class "bold"
+            :text "${ formattime( unix-time, "%H" ) }:${ formattime( unix-time, "%M" ) }"
+        )
+        (rain-text-center
+            :text "${ formattime( unix-time, "%a" ) }, ${ formattime( unix-time, "%b" ) } ${ formattime( unix-time, "%-d" ) }"
+        )
+    )
+)

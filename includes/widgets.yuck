@@ -1,0 +1,49 @@
+(defwidget rain-text-right [text]
+    (label
+        :xalign "1"
+        :text text
+    )
+)
+
+(defwidget rain-text-left [text]
+    (label
+        :truncate true
+        :xalign "1"
+        :text text
+    )
+)
+
+(defwidget rain-text-center [text]
+    (label
+        :xalign "0.5"
+        :text text
+    )
+)
+
+(defwidget rain-label [text]
+    (label
+        :xalign "0.5"
+        :text text
+    )
+)
+
+(defwidget rain-graph [value max ?class]
+    (graph
+        :value value
+        :max max
+        :time-range "100s"
+        :dynamic "false"
+        :width "80"
+        :class "graph"
+    )
+)
+
+(defwidget rain-progress [value]
+    (scale
+        :value value
+        :flipped true
+        :min "0"
+        :max "100"
+        :active "false"
+    )
+)

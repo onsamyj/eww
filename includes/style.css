@@ -1,0 +1,44 @@
+* {
+    all: unset;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+label {
+    padding: 0 4px;
+    color: #fff;
+}
+
+.rain-label {
+    padding: 4px 8px;
+    background: rgba(0,0,0,.75);
+    color: #fff;
+}
+
+graph {
+    background: rgba(255,255,255,.5);
+    opacity: .25;
+    margin: 1px;
+}
+
+.mono * {
+    font-family: mono;
+}
+
+scale trough {
+    background: rgba(255,255,255,.1);
+    min-height: 1px;
+    min-width: 80px;
+    margin: 0 1px;
+}
+
+scale trough highlight {
+    background: rgba(255,255,255,.5);
+    opacity: .25;
+}
+
+button:hover {
+    background: rgba(255,255,255,.1);
+}

@@ -1,0 +1,19 @@
+(include "/home/andrew/.config/eww/includes/windows.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.clock.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.cpu.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.disks.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.gpu.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.net.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.ram.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.wallet.yuck")
+
+(include "/home/andrew/.config/eww/includes/widgets.weather.yuck")

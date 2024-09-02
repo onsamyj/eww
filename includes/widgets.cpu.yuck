@@ -1,0 +1,42 @@
+(defwidget rain-cpu-overlay []
+    (tooltip
+        (label
+            :class "rain-label"
+            :text "System Monitor"
+        )
+        (overlay
+            :width 100
+            (rain-cpu-graph)
+            (rain-cpu-text)
+            (rain-cpu-button)
+        )
+    )
+)
+
+(defwidget rain-cpu-button []
+    (button
+        :active "true"
+        :onclick "/home/andrew/.config/eww/scripts/system-monitor.nu"
+    )
+)
+
+(defwidget rain-cpu-text []
+    (box
+        :orientation "vertical"
+        (rain-text-right
+            :text "${ round( ( EWW_CPU.avg ) * 1, 0 ) }% CPU"
+        )
+        (rain-text-right
+            :text "${ round( ( EWW_TEMPS.K10TEMP_TCTL ) * 1, 0 ) }°"
+        )
+    )
+)
+
+(defwidget rain-cpu-graph []
+    (box
+        (rain-graph
+            :value "${ EWW_CPU.avg }"
+            :max "100"
+        )
+    )
+)

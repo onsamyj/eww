@@ -1,0 +1,36 @@
+(defpoll wallet-days
+    ; Not included
+    :interval "100s"
+    "cat /home/andrew/.experiments/wallet.csv | awk -F ',' '{print $1}'"
+)
+
+(defpoll wallet-money
+    ; Not included
+    :interval "100s"
+    "cat /home/andrew/.experiments/wallet.csv | awk -F ',' '{print $2}'"
+)
+
+(defwidget rain-wallet-overlay []
+    (tooltip
+        (label
+            :class "rain-label"
+            :text "Download Wallet and Weather"
+        )
+        (overlay
+            (box
+                :width 100
+                :orientation "vertical"
+                (rain-text-right
+                    :text "${ wallet-days }"
+                )
+                (rain-text-right
+                    :text "${ wallet-money }"
+                )
+            )
+            (button
+                ; Not included
+                :onclick "/home/andrew/.nudes/eww-wallet.nu"
+            )
+        )
+    )
+)

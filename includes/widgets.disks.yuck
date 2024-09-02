@@ -1,0 +1,109 @@
+(defpoll du-haku
+    :interval "2s"
+    "df /dev/nvme0n1p2 | awk '/dev/ {print $3}'"
+)
+
+(defpoll da-haku
+    :interval "2s"
+    "df /dev/nvme0n1p2 | awk '/dev/ {print $4}'"
+)
+
+(defpoll du-lin
+    :interval "2s"
+    "df /dev/sda1 | awk '/dev/ {print $3}'"
+)
+
+(defpoll da-lin
+    :interval "2s"
+    "df /dev/sda1 | awk '/dev/ {print $4}'"
+)
+
+(defpoll du-boh
+    :interval "2s"
+    "df /dev/nvme0n1p4 | awk '/dev/ {print $3}'"
+)
+
+(defpoll da-boh
+    :interval "2s"
+    "df /dev/nvme0n1p4 | awk '/dev/ {print $4}'"
+)
+
+(defwidget rain-disks-one-overlay []
+    (overlay
+        (rain-disk-lin-progress)
+        (rain-disk-boh-progress)
+        (rain-disks-one-text)
+    )
+)
+
+(defwidget rain-disks-two-overlay []
+    (overlay
+        (rain-disk-haku-progress)
+        (rain-disk-swap-progress)
+        (rain-disks-two-text)
+    )
+)
+
+(defwidget rain-disks-one-text []
+    (box
+        :orientation "vertical"
+        (rain-text-right
+            :text "Lin ${ round( ( du-lin ) / 1024 / 1024, 0 ) }ᴳᴮ"
+        )
+        (rain-text-right
+            :text "Boh ${ round( ( du-boh ) / 1024 / 1024, 0 ) }ᴳᴮ"
+        )
+    )
+)
+
+(defwidget rain-disks-two-text []
+    (box
+        :orientation "vertical"
+        (rain-text-right
+            :text "Haku ${ round( ( du-haku ) / 1024 / 1024, 0 ) }ᴳᴮ"
+        )
+        (rain-text-right
+            :text "Swap ${ round( ( ( EWW_RAM.total_swap ) - ( EWW_RAM.free_swap ) ) / 1024 / 1024 / 1024, 0 ) }ᴳᴮ"
+        )
+    )
+)
+
+(defwidget rain-disk-lin-progress []
+    (box
+        (rain-progress
+            :value "${ du-lin * 100 / ( da-lin + du-lin ) }"
+        )
+    )
+)
+
+(defwidget rain-disk-boh-progress []
+    (transform
+        :translate-y "24"
+        (box
+            (rain-progress
+                :value "${ du-boh * 100 / ( da-boh + du-boh ) }"
+            )
+        )
+    )
+)
+
+(defwidget rain-disk-haku-progress []
+    (box
+        (rain-progress
+            :value "${ du-haku * 100 / ( da-haku + du-haku ) }"
+        )
+    )
+)
+
+(defwidget rain-disk-swap-progress []
+    (transform
+        :translate-y "24"
+        (box
+            (rain-progress
+                :value "${ ( EWW_RAM.total_swap -  EWW_RAM.free_swap ) * 100 / EWW_RAM.total_swap }"
+            )
+        )
+    )
+)
+
+

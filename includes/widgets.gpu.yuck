@@ -1,0 +1,42 @@
+(defpoll gpu-load
+    :interval "2s"
+    "cat /sys/class/drm/card0/device/gpu_busy_percent"
+)
+
+(defpoll gpu-vram-total
+    :interval "2s"
+    "cat /sys/class/drm/card0/device/mem_info_vram_total"
+)
+
+(defpoll gpu-vram-used
+    :interval "2s"
+    "cat /sys/class/drm/card0/device/mem_info_vram_used"
+)
+
+(defwidget rain-gpu-overlay []
+    (overlay
+        (rain-gpu-graph)
+        (rain-gpu-text)
+    )
+)
+
+(defwidget rain-gpu-text []
+    (box
+        :orientation "vertical"
+        (rain-text-right
+            :text "${ gpu-load }% GPU"
+        )
+        (rain-text-right
+            :text "${ round( ( EWW_TEMPS.AMDGPU_EDGE ) * 1, 0 ) }°"
+        )
+    )
+)
+
+(defwidget rain-gpu-graph []
+    (box
+        (rain-graph
+            :value "${ gpu-load }"
+            :max "100"
+        )
+    )
+)

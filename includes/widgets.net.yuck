@@ -1,0 +1,73 @@
+(defpoll netdown
+    :interval "2s"
+    "/home/andrew/.config/eww/scripts/net-down.nu"
+)
+
+(defpoll netup
+    :interval "2s"
+    "/home/andrew/.config/eww/scripts/net-up.nu"
+)
+
+(defwidget rain-net-overlay []
+    (overlay
+        (rain-net-text)
+        (rain-net-graph-box)
+    )
+)
+
+(defwidget rain-net-text []
+    (box
+        :orientation "vertical"
+        (box
+            :visible { netdown <= 1024 }
+            (rain-text-right
+                :text "${ round( netdown / 1, 0 ) } 🡣"
+            )
+        )
+        (box
+            :visible { netdown > 1024 && netdown <= 1048576 }
+            (rain-text-right
+                :text "${ round( netdown / 1024, 0 ) }ᴷᴮ 🡣"
+            )
+        )
+        (box
+            :visible { netdown > 1048576 }
+            (rain-text-right
+                :text "${ round( netdown / 1048576, 0 ) }ᴹᴮ 🡣"
+            )
+        )
+
+        (box
+            :visible { netup <= 1024 }
+            (rain-text-right
+                :text "${ round( netup / 1, 0 ) } 🡡"
+            )
+        )
+        (box
+            :visible { netup > 1024 && netup <= 1048576 }
+            (rain-text-right
+                :text "${ round( netup / 1024, 0 ) }ᴷᴮ 🡡"
+            )
+        )
+        (box
+            :visible { netup > 1048576 }
+            (rain-text-right
+                :text "${ round( netup / 1048576, 0 ) }ᴹᴮ 🡡"
+            )
+        )
+    )
+)
+
+(defwidget rain-net-graph-box []
+    (box
+        :orientation "vertical"
+        (rain-graph
+            :value "${ netdown }"
+            :max "10485760"
+        )
+        (rain-graph
+            :value "${ netup }"
+            :max "10485760"
+        )
+    )
+)

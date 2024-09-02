@@ -1,0 +1,34 @@
+(defpoll weather-now
+    :interval "100s"
+    ; Not included
+    "jq '.data | .[]' /home/andrew/.experiments/weather.json"
+)
+
+(defwidget rain-weather-overlay []
+    (tooltip
+        (label
+            :class "rain-label"
+            :text "${ weather-now.weather.description }"
+        )
+            (box
+
+                :orientation "horizontal"
+                (image
+                    :width 48
+                    :image-width 48
+                    :image-height 48
+                    :path "/home/andrew/.config/eww/images/${ weather-now.weather.code }.png"
+                )
+                (box
+                    :orientation "vertical"
+                    :width 52
+                    (rain-text-right
+                        :text "${ weather-now.app_temp > 0 ? "+" : "" }${ weather-now.app_temp < 0 ? "−" : "" }${ replace( weather-now.app_temp, "\\.", "," ) }°"
+                    )
+                    (rain-text-right
+                        :text "≋${ weather-now.rh }%"
+                    )
+                )
+        )
+    )
+)
