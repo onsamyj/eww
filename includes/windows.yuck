@@ -1,6 +1,7 @@
 ; Rain Left for Chihiro
 
 (defwindow rain-left
+; window in the lower left corner of a monitor…
     :monitor "27E2G5/RVGN3HA002746"
     :geometry (geometry
         :x "0"
@@ -16,19 +17,20 @@
 
 (defwidget rain-left-overall []
     (box
+    ; …and all the widgets in it
         :orientation "horizontal"
         (rain-disks-one-overlay)
         (rain-disks-two-overlay)
         (rain-wallet-overlay)
         (rain-weather-overlay)
         (rain-clock-overlay)
-        ; (rain-tasks)
     )
 )
 
 ; Rain Right for Chihiro
 
 (defwindow rain-right
+; window in the lower right corner of a monitor…
     :monitor "27E2G5/RVGN3HA002746"
     :geometry (geometry
         :x "0"
@@ -37,11 +39,14 @@
         :height "48px"
         :anchor "bottom right")
     :stacking "overlay"
+    :exclusive true
+    :focusable false
     (rain-right-overall)
 )
 
 (defwidget rain-right-overall []
     (box
+    ; …and all the widgets in it
         :orientation "horizontal"
         (rain-net-overlay)
         (rain-cpu-overlay)

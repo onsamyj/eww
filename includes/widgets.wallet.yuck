@@ -1,17 +1,20 @@
+; personal information omitted
+
 (defpoll wallet-days
-    ; Not included
+; Not included
     :interval "100s"
     "cat /home/andrew/.experiments/wallet.csv | awk -F ',' '{print $1}'"
 )
 
 (defpoll wallet-money
-    ; Not included
+; Not included
     :interval "100s"
     "cat /home/andrew/.experiments/wallet.csv | awk -F ',' '{print $2}'"
 )
 
 (defwidget rain-wallet-overlay []
     (tooltip
+    ; the first thing in `tooltip` is a tooltip itself, the second is what the tooltip is for
         (label
             :class "rain-label"
             :text "Download Wallet and Weather"
@@ -28,7 +31,7 @@
                 )
             )
             (button
-                ; Not included
+            ; Not included
                 :onclick "/home/andrew/.nudes/eww-wallet.nu"
             )
         )

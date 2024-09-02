@@ -1,19 +1,22 @@
+; personal information omitted
+
 (defpoll weather-now
+; Not included
     :interval "100s"
-    ; Not included
     "jq '.data | .[]' /home/andrew/.experiments/weather.json"
 )
 
 (defwidget rain-weather-overlay []
     (tooltip
+    ; the first thing in `tooltip` is a tooltip itself, the second is what the tooltip is for
         (label
             :class "rain-label"
             :text "${ weather-now.weather.description }"
         )
             (box
-
                 :orientation "horizontal"
                 (image
+                ; Images are symlinked to their codes from the weather json.
                     :width 48
                     :image-width 48
                     :image-height 48
@@ -23,9 +26,11 @@
                     :orientation "vertical"
                     :width 52
                     (rain-text-right
+                    ; temperature degrees in Celsius, with “+” or “−”, or just “0”, with “.” swaped for “,”
                         :text "${ weather-now.app_temp > 0 ? "+" : "" }${ weather-now.app_temp < 0 ? "−" : "" }${ replace( weather-now.app_temp, "\\.", "," ) }°"
                     )
                     (rain-text-right
+                    ; humidity
                         :text "≋${ weather-now.rh }%"
                     )
                 )

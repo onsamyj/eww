@@ -1,3 +1,15 @@
+(defpoll gpu-vram-total
+; GPU total memory, can you set interval to infinity?
+    :interval "20000000000s"
+    "cat /sys/class/drm/card0/device/mem_info_vram_total"
+)
+    
+(defpoll gpu-vram-used
+    ; GPU used memory
+    :interval "2s"
+    "cat /sys/class/drm/card0/device/mem_info_vram_used"
+)
+
 (defwidget rain-ram-swap-overlay []
     (overlay
         (rain-ram-graph)
@@ -9,9 +21,11 @@
     (box
         :orientation "vertical"
         (rain-text-right
+        ; memeory used, converted to GB
             :text "RAM ${ round( ( EWW_RAM.used_mem ) / 1024 / 1024 / 1024, 1 ) }ᴳᴮ"
         )
         (rain-text-right
+        ; GPU memory used, converted to GB
             :text "VRAM ${ round( ( gpu-vram-used ) / 1024 / 1024 / 1024, 1 ) }ᴳᴮ"
         )
     )
@@ -20,6 +34,7 @@
 (defwidget rain-ram-graph []
     (box
         (rain-graph
+        ; memory, for a graph
             :value "${ EWW_RAM.used_mem }"
             :max "${ EWW_RAM.total_mem }"
         )
@@ -29,6 +44,7 @@
 (defwidget rain-vgram-graph []
     (box
         (rain-graph
+        ; GPU memory, for a graph
             :value "${ gpu-vram-used }"
             :max "${ gpu-vram-total }"
         )

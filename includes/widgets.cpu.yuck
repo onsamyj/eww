@@ -1,5 +1,6 @@
 (defwidget rain-cpu-overlay []
     (tooltip
+    ; the first thing in `tooltip` is a tooltip itself, the second is what the tooltip is for
         (label
             :class "rain-label"
             :text "System Monitor"
@@ -15,6 +16,7 @@
 
 (defwidget rain-cpu-button []
     (button
+    ; launch System Monitor
         :active "true"
         :onclick "/home/andrew/.config/eww/scripts/system-monitor.nu"
     )
@@ -24,9 +26,11 @@
     (box
         :orientation "vertical"
         (rain-text-right
+        ; CPU load, rounded
             :text "${ round( ( EWW_CPU.avg ) * 1, 0 ) }% CPU"
         )
         (rain-text-right
+        ; CPU temperature, rounded
             :text "${ round( ( EWW_TEMPS.K10TEMP_TCTL ) * 1, 0 ) }°"
         )
     )
@@ -35,6 +39,7 @@
 (defwidget rain-cpu-graph []
     (box
         (rain-graph
+        ; CPU load graph
             :value "${ EWW_CPU.avg }"
             :max "100"
         )

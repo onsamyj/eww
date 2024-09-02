@@ -1,9 +1,11 @@
 (defpoll netdown
+; network speed down
     :interval "2s"
     "/home/andrew/.config/eww/scripts/net-down.nu"
 )
 
 (defpoll netup
+; network speed up
     :interval "2s"
     "/home/andrew/.config/eww/scripts/net-up.nu"
 )
@@ -17,39 +19,51 @@
 
 (defwidget rain-net-text []
     (box
+    ; very inefficient (?) way of displaying kilo– and mega– by displaying a specific box only when the speed is within a certain range
         :orientation "vertical"
+
+; down
+
         (box
+        ; for bytes
             :visible { netdown <= 1024 }
             (rain-text-right
                 :text "${ round( netdown / 1, 0 ) } 🡣"
             )
         )
         (box
+        ; for kilo
             :visible { netdown > 1024 && netdown <= 1048576 }
             (rain-text-right
                 :text "${ round( netdown / 1024, 0 ) }ᴷᴮ 🡣"
             )
         )
         (box
+        ; for mega
             :visible { netdown > 1048576 }
             (rain-text-right
                 :text "${ round( netdown / 1048576, 0 ) }ᴹᴮ 🡣"
             )
         )
 
+; up
+
         (box
+        ; for bytes
             :visible { netup <= 1024 }
             (rain-text-right
                 :text "${ round( netup / 1, 0 ) } 🡡"
             )
         )
         (box
+        ; for kilo
             :visible { netup > 1024 && netup <= 1048576 }
             (rain-text-right
                 :text "${ round( netup / 1024, 0 ) }ᴷᴮ 🡡"
             )
         )
         (box
+        ; for mega
             :visible { netup > 1048576 }
             (rain-text-right
                 :text "${ round( netup / 1048576, 0 ) }ᴹᴮ 🡡"
@@ -60,12 +74,16 @@
 
 (defwidget rain-net-graph-box []
     (box
+    ; aside: was not able to find a way to mirror the graph upside down and overlay it on top of the other one, would like to!
         :orientation "vertical"
         (rain-graph
+        ; down graph
+        ;
             :value "${ netdown }"
             :max "10485760"
         )
         (rain-graph
+        ; down graph
             :value "${ netup }"
             :max "10485760"
         )

@@ -1,7 +1,9 @@
 #!/usr/bin/env nu
 
-# Start EWW
-# -------------
+# Start Eww
+# ---------
+
+# for autostart
 
 eww open rain-right
 eww open rain-left

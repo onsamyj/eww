@@ -1,3 +1,5 @@
+; include everything!
+
 (include "/home/andrew/.config/eww/includes/windows.yuck")
 
 (include "/home/andrew/.config/eww/includes/widgets.yuck")

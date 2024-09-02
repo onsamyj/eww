@@ -1,35 +1,42 @@
 (defpoll du-haku
+    ; used for drive 1 (haku)
     :interval "2s"
     "df /dev/nvme0n1p2 | awk '/dev/ {print $3}'"
 )
 
 (defpoll da-haku
+    ; available for drive 1 (haku)
     :interval "2s"
     "df /dev/nvme0n1p2 | awk '/dev/ {print $4}'"
 )
 
 (defpoll du-lin
+    ; used for drive 2 (lin)
     :interval "2s"
     "df /dev/sda1 | awk '/dev/ {print $3}'"
 )
 
 (defpoll da-lin
+    ; available for drive 2 (lin)
     :interval "2s"
     "df /dev/sda1 | awk '/dev/ {print $4}'"
 )
 
 (defpoll du-boh
+    ; used for drive 3 (boh)
     :interval "2s"
     "df /dev/nvme0n1p4 | awk '/dev/ {print $3}'"
 )
 
 (defpoll da-boh
+    ; available for drive 3 (boh)
     :interval "2s"
     "df /dev/nvme0n1p4 | awk '/dev/ {print $4}'"
 )
 
 (defwidget rain-disks-one-overlay []
     (overlay
+    ; disks 2 and 3
         (rain-disk-lin-progress)
         (rain-disk-boh-progress)
         (rain-disks-one-text)
@@ -38,6 +45,7 @@
 
 (defwidget rain-disks-two-overlay []
     (overlay
+    ; disk 1 and swap
         (rain-disk-haku-progress)
         (rain-disk-swap-progress)
         (rain-disks-two-text)
@@ -48,9 +56,11 @@
     (box
         :orientation "vertical"
         (rain-text-right
+        ; used converted to GB
             :text "Lin ${ round( ( du-lin ) / 1024 / 1024, 0 ) }ᴳᴮ"
         )
         (rain-text-right
+        ; used converted to GB
             :text "Boh ${ round( ( du-boh ) / 1024 / 1024, 0 ) }ᴳᴮ"
         )
     )
@@ -60,9 +70,11 @@
     (box
         :orientation "vertical"
         (rain-text-right
+        ; used converted to GB
             :text "Haku ${ round( ( du-haku ) / 1024 / 1024, 0 ) }ᴳᴮ"
         )
         (rain-text-right
+        ; total swap minus free = used, converted to GB
             :text "Swap ${ round( ( ( EWW_RAM.total_swap ) - ( EWW_RAM.free_swap ) ) / 1024 / 1024 / 1024, 0 ) }ᴳᴮ"
         )
     )
@@ -71,6 +83,7 @@
 (defwidget rain-disk-lin-progress []
     (box
         (rain-progress
+            ; percentage for a progress bar
             :value "${ du-lin * 100 / ( da-lin + du-lin ) }"
         )
     )
@@ -78,9 +91,11 @@
 
 (defwidget rain-disk-boh-progress []
     (transform
+    ; push it down
         :translate-y "24"
         (box
             (rain-progress
+                ; percentage for a progress bar
                 :value "${ du-boh * 100 / ( da-boh + du-boh ) }"
             )
         )
@@ -90,6 +105,7 @@
 (defwidget rain-disk-haku-progress []
     (box
         (rain-progress
+            ; percentage for a progress bar
             :value "${ du-haku * 100 / ( da-haku + du-haku ) }"
         )
     )
@@ -97,9 +113,11 @@
 
 (defwidget rain-disk-swap-progress []
     (transform
+    ; push it down
         :translate-y "24"
         (box
             (rain-progress
+                ; percentage for a progress bar
                 :value "${ ( EWW_RAM.total_swap -  EWW_RAM.free_swap ) * 100 / EWW_RAM.total_swap }"
             )
         )

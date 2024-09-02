@@ -1,16 +1,7 @@
 (defpoll gpu-load
+; GPU load
     :interval "2s"
     "cat /sys/class/drm/card0/device/gpu_busy_percent"
-)
-
-(defpoll gpu-vram-total
-    :interval "2s"
-    "cat /sys/class/drm/card0/device/mem_info_vram_total"
-)
-
-(defpoll gpu-vram-used
-    :interval "2s"
-    "cat /sys/class/drm/card0/device/mem_info_vram_used"
 )
 
 (defwidget rain-gpu-overlay []
@@ -24,9 +15,11 @@
     (box
         :orientation "vertical"
         (rain-text-right
+        ; GPU load
             :text "${ gpu-load }% GPU"
         )
         (rain-text-right
+        ; GPU temperature, rounded
             :text "${ round( ( EWW_TEMPS.AMDGPU_EDGE ) * 1, 0 ) }°"
         )
     )
@@ -35,6 +28,7 @@
 (defwidget rain-gpu-graph []
     (box
         (rain-graph
+        ; GPU load (already in %), for a graph
             :value "${ gpu-load }"
             :max "100"
         )

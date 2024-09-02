@@ -1,15 +1,19 @@
 (defpoll unix-time
+; get time every 2 seconds
+; format https://www.gnu.org/software/coreutils/manual/html_node/Date-format-specifiers.html
     :interval "2s"
     "date +\'%s\'"
 )
 
 (defwidget rain-clock-overlay []
     (tooltip
+    ; the first thing in `tooltip` is a tooltip itself, the second is what the tooltip is for
         (label
             :class "rain-label"
             :text "Turn off screens"
         )
         (overlay
+        ; It needs `:width`, otherwise it would be too narrow. 
             :width 100
             (overlay
                 (rain-clock-dotweek)
@@ -26,6 +30,7 @@
     (box
         :class "mono"
         (rain-text-center
+        ; brute-force way to display 7 dots for a week
             :text "${ formattime( unix-time, "%u" ) >= 1 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 2 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 3 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 4 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 5 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 6 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 7 ? "•" : "·" }"
         )
     )
@@ -35,10 +40,12 @@
     (box
         :orientation "vertical"
         (rain-text-center
+        ; 24-hour clock
             :class "bold"
             :text "${ formattime( unix-time, "%H" ) }:${ formattime( unix-time, "%M" ) }"
         )
         (rain-text-center
+        ; week day, month day
             :text "${ formattime( unix-time, "%a" ) }, ${ formattime( unix-time, "%b" ) } ${ formattime( unix-time, "%-d" ) }"
         )
     )

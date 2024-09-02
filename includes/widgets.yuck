@@ -1,3 +1,4 @@
+; right-aligned text
 (defwidget rain-text-right [text]
     (label
         :xalign "1"
@@ -5,6 +6,7 @@
     )
 )
 
+; left-aligned text
 (defwidget rain-text-left [text]
     (label
         :truncate true
@@ -13,6 +15,7 @@
     )
 )
 
+; center-aligned text
 (defwidget rain-text-center [text]
     (label
         :xalign "0.5"
@@ -20,30 +23,31 @@
     )
 )
 
+; hover text
 (defwidget rain-label [text]
     (label
-        :xalign "0.5"
         :text text
     )
 )
 
 (defwidget rain-graph [value max ?class]
     (graph
+    ; graph, going from `value` to `max`, for 100 seconds
         :value value
         :max max
         :time-range "100s"
         :dynamic "false"
-        :width "80"
         :class "graph"
     )
 )
 
 (defwidget rain-progress [value]
     (scale
+    ; progress bar, from 0 to 100, from right to left (flipped)
         :value value
-        :flipped true
-        :min "0"
         :max "100"
+        :min "0"
+        :flipped true
         :active "false"
     )
 )
