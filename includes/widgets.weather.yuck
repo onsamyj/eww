@@ -23,11 +23,11 @@
                     :path "/home/andrew/.config/eww/images/${ weather-now.weather.code }.png"
                 )
                 (box
+                    ; temperature degrees in Celsius, with “+” or “−”, or just “0”, with “.” swaped for “,”
                     :orientation "vertical"
                     :width 52
                     (rain-text-right
-                    ; temperature degrees in Celsius, with “+” or “−”, or just “0”, with “.” swaped for “,”
-                        :text "${ weather-now.app_temp > 0 ? "+" : "" }${ weather-now.app_temp < 0 ? "−" : "" }${ replace( weather-now.app_temp, "\\.", "," ) }°"
+                            :text "${ weather-now.app_temp > 0 ? "+" : "" }${ replace( replace( weather-now.app_temp, "\\-", "−" ), "\\.", "," ) }°"
                     )
                     (rain-text-right
                     ; humidity
