@@ -35,14 +35,14 @@
         ; for kilo
             :visible { netdown > 1024 && netdown <= 1048576 }
             (rain-text-right
-                :text "${ round( netdown / 1024, 0 ) }ᴷᴮ 🡣"
+                :text "${ round( netdown / 1024, 0 ) }ᴷ 🡣"
             )
         )
         (box
         ; for mega
             :visible { netdown > 1048576 }
             (rain-text-right
-                :text "${ round( netdown / 1048576, 0 ) }ᴹᴮ 🡣"
+                :text "${ round( netdown / 1048576, 0 ) }ᴹ 🡣"
             )
         )
 
@@ -59,14 +59,14 @@
         ; for kilo
             :visible { netup > 1024 && netup <= 1048576 }
             (rain-text-right
-                :text "${ round( netup / 1024, 0 ) }ᴷᴮ 🡡"
+                :text "${ round( netup / 1024, 0 ) }ᴷ 🡡"
             )
         )
         (box
         ; for mega
             :visible { netup > 1048576 }
             (rain-text-right
-                :text "${ round( netup / 1048576, 0 ) }ᴹᴮ 🡡"
+                :text "${ round( netup / 1048576, 0 ) }ᴹ 🡡"
             )
         )
     )
@@ -78,7 +78,6 @@
         :orientation "vertical"
         (rain-graph
         ; down graph
-        ;
             :value "${ netdown }"
             :max "10485760"
         )

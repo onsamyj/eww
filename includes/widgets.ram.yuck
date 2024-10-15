@@ -22,11 +22,11 @@
         :orientation "vertical"
         (rain-text-right
         ; memeory used, converted to GB
-            :text "RAM ${ round( ( EWW_RAM.used_mem ) / 1024 / 1024 / 1024, 1 ) }ᴳᴮ"
+            :text "RAM ${ round( ( EWW_RAM.used_mem ) / 1024 / 1024 / 1024, 1 ) }"
         )
         (rain-text-right
         ; GPU memory used, converted to GB
-            :text "VRAM ${ round( ( gpu-vram-used ) / 1024 / 1024 / 1024, 1 ) }ᴳᴮ"
+            :text "VRAM ${ round( ( gpu-vram-used ) / 1024 / 1024 / 1024, 1 ) }"
         )
     )
 )

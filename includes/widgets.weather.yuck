@@ -11,7 +11,8 @@
     ; the first thing in `tooltip` is a tooltip itself, the second is what the tooltip is for
         (label
             :class "rain-label"
-            :text "${ weather-now.weather.description }"
+            ; with temp in Kelvins, for @zvavybir@social.zvavybir.eu
+            :text "${ weather-now.weather.description }; ${ replace( round( weather-now.app_temp + 273.15, 1 ), "\\.", "," ) } K"
         )
             (box
                 :orientation "horizontal"

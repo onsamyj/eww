@@ -2,8 +2,9 @@
     all: unset;
 }
 
-.bold {
-    font-weight: bolder;
+box,
+label {
+    font-family: "Source Code Pro", Hack, monospace;
 }
 
 label {
@@ -11,21 +12,10 @@ label {
     color: #fff;
 }
 
-/* hover text */
-.rain-label {
-    padding: 4px 8px;
-    background: rgba(0,0,0,.75);
-    color: #fff;
-}
-
 graph {
     background: rgba(255,255,255,.5);
     opacity: .25;
     margin: 1px;
-}
-
-.mono * {
-    font-family: mono;
 }
 
 scale trough {
@@ -42,4 +32,11 @@ scale trough highlight {
 
 button:hover {
     background: rgba(255,255,255,.1);
+}
+
+/* hover text */
+.rain-label {
+    padding: 4px 8px;
+    background: rgba(0,0,0,.75);
+    color: #fff;
 }

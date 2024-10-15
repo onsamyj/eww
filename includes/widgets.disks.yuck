@@ -57,11 +57,11 @@
         :orientation "vertical"
         (rain-text-right
         ; used converted to GB
-            :text "Lin ${ round( ( du-lin ) / 1024 / 1024, 0 ) }ᴳᴮ"
+            :text "Lin ${ round( ( du-lin ) / 1024 / 1024, 0 ) }"
         )
         (rain-text-right
         ; used converted to GB
-            :text "Boh ${ round( ( du-boh ) / 1024 / 1024, 0 ) }ᴳᴮ"
+            :text "Boh ${ round( ( du-boh ) / 1024 / 1024, 0 ) }"
         )
     )
 )
@@ -71,11 +71,11 @@
         :orientation "vertical"
         (rain-text-right
         ; used converted to GB
-            :text "Haku ${ round( ( du-haku ) / 1024 / 1024, 0 ) }ᴳᴮ"
+            :text "Haku ${ round( ( du-haku ) / 1024 / 1024, 0 ) }"
         )
         (rain-text-right
         ; total swap minus free = used, converted to GB
-            :text "Swap ${ round( ( ( EWW_RAM.total_swap ) - ( EWW_RAM.free_swap ) ) / 1024 / 1024 / 1024, 0 ) }ᴳᴮ"
+            :text "Swap ${ round( ( ( EWW_RAM.total_swap ) - ( EWW_RAM.free_swap ) ) / 1024 / 1024 / 1024, 0 ) }"
         )
     )
 )
