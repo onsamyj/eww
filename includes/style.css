@@ -1,10 +1,10 @@
 * {
-    all: unset;
+    all:                unset;
 }
 
 box,
 label {
-    font-family: "Source Code Pro", Hack, monospace;
+    font-family:        "Source Code Pro", Hack, monospace;
 }
 
 label {
@@ -13,25 +13,25 @@ label {
 }
 
 graph {
-    background: rgba(255,255,255,.5);
-    opacity: .25;
-    margin: 1px;
+    background:         rgba(255,255,255,.5);
+    opacity:            .25;
+    margin:             1px;
 }
 
 scale trough {
-    background: rgba(255,255,255,.1);
-    min-height: 1px;
-    min-width: 80px;
-    margin: 0 1px;
+    background:         rgba(255,255,255,.1);
+    min-height:         1px;
+    min-width:          80px;
+    margin:             0 1px;
 }
 
 scale trough highlight {
-    background: rgba(255,255,255,.5);
-    opacity: .25;
+    background:         rgba(255,255,255,.5);
+    opacity:            .25;
 }
 
 button:hover {
-    background: rgba(255,255,255,.1);
+    background:         rgba(255,255,255,.1);
 }
 
 /* hover text */
@@ -39,4 +39,9 @@ button:hover {
     padding: 4px 8px;
     background: rgba(0,0,0,.75);
     color: #fff;
+}
+
+/* pushes dotweek slightly higher */
+.dotweek {
+    margin-bottom: 2px;
 }

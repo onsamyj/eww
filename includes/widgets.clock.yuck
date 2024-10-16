@@ -13,7 +13,7 @@
             :text "Turn off screens"
         )
         (overlay
-        ; It needs `:width`, otherwise it would be too narrow. 
+        ; It needs `:width`, otherwise it would be too narrow.
             :width 100
             (overlay
                 (rain-clock-dotweek)
@@ -28,10 +28,10 @@
 
 (defwidget rain-clock-dotweek []
     (box
-        :class "mono"
+        :class "dotweek"
         (rain-text-center
         ; brute-force way to display 7 dots for a week
-            :text "${ formattime( unix-time, "%u" ) >= 1 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 2 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 3 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 4 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 5 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 6 ? "•" : "·" }${ formattime( unix-time, "%u" ) >= 7 ? "•" : "·" }"
+            :text "${ formattime( unix-time, "%u" ) >= 1 ? "•" : "◦" }${ formattime( unix-time, "%u" ) >= 2 ? "•" : "◦" }${ formattime( unix-time, "%u" ) >= 3 ? "•" : "◦" }${ formattime( unix-time, "%u" ) >= 4 ? "•" : "◦" }${ formattime( unix-time, "%u" ) >= 5 ? "•" : "◦" }${ formattime( unix-time, "%u" ) >= 6 ? "•" : "◦" }${ formattime( unix-time, "%u" ) >= 7 ? "•" : "◦" }"
         )
     )
 )
@@ -46,7 +46,7 @@
         )
         (rain-text-center
         ; week day, month day
-            :text "${ formattime( unix-time, "%a" ) }, ${ formattime( unix-time, "%b" ) } ${ formattime( unix-time, "%-d" ) }"
+            :text "${ formattime( unix-time, "%b" ) } ${ formattime( unix-time, "%-d" ) }"
         )
     )
 )

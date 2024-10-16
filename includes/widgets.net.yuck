@@ -73,18 +73,21 @@
 )
 
 (defwidget rain-net-graph-box []
-    (box
-    ; aside: was not able to find a way to mirror the graph upside down and overlay it on top of the other one, would like to!
-        :orientation "vertical"
-        (rain-graph
-        ; down graph
-            :value "${ netdown }"
-            :max "10485760"
+    (overlay
+        ; upside down
+        (transform
+        :scale-y "-100%"
+        :translate-y "-100%"
+            (rain-graph
+            ; down graph
+                :value "${ netdown }"
+                :max "10485760"
+            )
         )
-        (rain-graph
-        ; down graph
-            :value "${ netup }"
-            :max "10485760"
-        )
+            (rain-graph
+            ; up graph
+                :value "${ netup }"
+                :max "10485760"
+            )
     )
 )
