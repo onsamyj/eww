@@ -1,3 +1,5 @@
+[I moved to Conky](https://codeberg.org/alsorew/1009).
+
 # Eww, Rain
 
 Informational [Eww](https://github.com/elkowar/eww) widgets to work in conjunction with KDE Plasma.
